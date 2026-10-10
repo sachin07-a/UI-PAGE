@@ -4,3 +4,6 @@ git add file_name(to add file to stage from cd)--A
 git add . (to add all files to stage from a folder)
 git commit -m "first commmit" ()--DONE
 #then check status using : git status
+
+rm -rf * (to remove every file and initialized repository)
+clear (to clear chat)
