@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main{
+    height: 300px;
+    width: 300px;   
+    background-color: black;
+    font-size: 20px;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    /* transition: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out; */
+    animation: moveRight 1s ease-in-out 10;
+}
+
+/* main:hover{
+    transform: rotateX(90deg);
+} */
+
+@keyframes moveRight {
+    from{
+      transform: translateX(0%);
+    }
+    to{
+      transform: translateX(600px);
+    }
+}
+
+#heading {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    animation: moveRight 1s ease-in-out 0 2 ; 
+}

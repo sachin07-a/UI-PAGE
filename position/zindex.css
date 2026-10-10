@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    position: relative;
+    height: 80%;
+    background-color: rgb(237, 129, 13);
+    width: 80%;
+}
+
+
+.box {
+    height: 30%;
+    width: 30%;
+    background-color: red;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+h1 {
+    position:sticky;
+    top: 10%;
+}
+
+#box2 { 
+    background-color: pink;
+    position: absolute;
+    top: 20%;
+    left:15%;
+}
+
+#box3 {
+    background-color: green;   
+}
+
+
+#box1 {
+    position: relative;
+    background-color: rgb(71, 71, 112);
+    z-index: 2;
+    /* z-index makes the box below and up i.e, beneath and up the screen */
+    /* visibility: hidden; */
+     /* 1. visibility hides the boxx where you use the tag and use visible in case of hidden to see the file
+        2.if we display:block; the element is completely removed from our html file  */
+    position: relative; 
+}
+   

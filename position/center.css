@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    /* position: relative; */
+    height: 80%;
+    background-color: rgb(237, 129, 13);
+    width: 80%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+
+.box {
+    height: 30%;
+    width: 30%;
+    background-color: red;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* above is the another method to make the box center the ,
+       another one is at main which is have commented to make show this as another method */
+}
+
+/* h1 {
+    position:sticky;
+    top: 10%;
+} */
+
+/* #box2 { 
+    background-color: pink;
+    position: absolute;
+    top: 20%;
+    left:15%;
+}
+
+#box3 {
+    background-color: green;   
+} */
+
+
+#box1 {
+    position: relative;
+    background-color: rgb(71, 71, 112); 
+}
