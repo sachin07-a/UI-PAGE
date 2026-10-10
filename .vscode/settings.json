@@ -2,5 +2,6 @@
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "git.decorations.enabled": true,
     "explorer.decorations.badges": true,
-    "explorer.decorations.colors": true
+    "explorer.decorations.colors": true,
+    "explorer.expandSingleFolderWorkspaces": false
 }
