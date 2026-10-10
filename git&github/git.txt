@@ -17,7 +17,7 @@ M--modified
  --commited
 
 git log (to see complete report with date)
- --- use q to  exit log page
+ --- use q to exit log page
 git div (we can see whats the exact change)
 
 
