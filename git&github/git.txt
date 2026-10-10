@@ -1,0 +1,5 @@
+git init(initialization)---U
+git status(report)
+git add file_name(to add file to stage from cd)--A
+git add . (to add all files to stage from a folder)
+git commit -m "first commmit" ()--DONE
