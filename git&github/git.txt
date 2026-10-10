@@ -13,4 +13,5 @@ git log (we can see whats there in the repository)
 
 U-- untracked 
 A--tracked and pushed towards stage
+M--modified
  --commited
