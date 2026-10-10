@@ -11,3 +11,6 @@ clear (to clear chat)
 
 git log (we can see whats there in the repository)
 
+U-- untracked 
+A--tracked and pushed towards stage
+ --commited
