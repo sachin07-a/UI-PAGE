@@ -18,6 +18,6 @@ M--modified
 
 git log (to see complete report with date)
  --- use q to exit log page
-git div (we can see whats the exact change)
+git diff (we can see whats the exact change)
 
 
