@@ -8,3 +8,6 @@ git commit -m "message" ()--DONE NO LETTER
 
 rm -rf * (to remove every file and initialized repository)
 clear (to clear chat)
+
+git log (we can see whats there in the repository)
+
