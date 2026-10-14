@@ -139,3 +139,6 @@ console.log("bye");
 0 ?
     console.log("hello") : console.log("bye");
 
+null ?
+    console.log("hello") : console.log("bye");
+
