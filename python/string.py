@@ -58,3 +58,4 @@ print("length of my name is:",len(name))
 
 lop="nyc is a good platform to learn coding from scratch"
 print(lop.count("a"))
+
