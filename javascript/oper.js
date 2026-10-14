@@ -110,4 +110,32 @@ if(!true) {
     console.log("not fine")
 }
 
+// D.ASSIGNMENT-OPERATOR
+
+
+// let sum=0
+// sum = sum + 5 // or sum+=5;  //-->5
+// console.log(sum);
+
+// E.UNARY-OPERATOR
+
+let sum=0
+console.log(sum) // (0)
+console.log(sum++)  //-->post increment (0)
+console.log(++sum)  //-->pre increment (2)
+
+// F.TERNARY-OPERATOR
+
+true ?
+    console.log("hello")
+:
+    console.log("bye");
+
+false ?
+console.log("hello")
+:
+console.log("bye");
+
+0 ?
+    console.log("hello") : console.log("bye");
 
