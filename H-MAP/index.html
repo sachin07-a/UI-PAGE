@@ -1,577 +1,1828 @@
 <!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_tab" name="shell-type"/>
+  <meta name="theme-color" content="#121317"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>HabitHeat — Telemetry & Habit Heatmaps</title>
+  
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" type="image/png" href="icon-192.png"/>
+  <link rel="apple-touch-icon" href="icon-192.png"/>
+  
+  <!-- Material Symbols & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 
-<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior:none;background-color:#121317;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary": "#003824", "tertiary-fixed-dim": "#d0bcff", "surface-bright": "#38393d", "tertiary-fixed": "#e9ddff", "on-secondary-fixed-variant": "#005236", "inverse-on-surface": "#2f3035", "primary": "#c0c1ff", "primary-fixed": "#e1e0ff", "outline-variant": "#464554", "on-tertiary": "#3c0091", "tertiary": "#d0bcff", "surface-variant": "#343439", "on-tertiary-fixed": "#23005c", "on-primary": "#1000a9", "on-primary-fixed-variant": "#2f2ebe", "surface-container": "#1f1f24", "on-primary-fixed": "#07006c", "on-tertiary-container": "#340080", "outline": "#908fa0", "inverse-primary": "#494bd6", "on-error": "#690005", "on-secondary-fixed": "#002113", "on-surface-variant": "#c7c4d7", "surface": "#121317", "inverse-surface": "#e3e2e7", "surface-container-highest": "#343439", "primary-container": "#8083ff", "on-tertiary-fixed-variant": "#5516be", "secondary-container": "#00a572", "secondary-fixed-dim": "#4edea3", "on-secondary-container": "#00311f", "surface-dim": "#121317", "secondary-fixed": "#6ffbbe", "secondary": "#4edea3", "primary-fixed-dim": "#c0c1ff", "surface-tint": "#c0c1ff", "on-primary-container": "#0d0096", "on-background": "#e3e2e7", "surface-container-lowest": "#0d0e12", "error-container": "#93000a", "error": "#ffb4ab", "on-error-container": "#ffdad6", "surface-container-high": "#292a2e", "on-surface": "#e3e2e7", "background": "#121317", "surface-container-low": "#1a1b20", "tertiary-container": "#a078ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.75rem", "space-lg": "1.25rem", "margin": "1rem", "space-xs": "0.25rem", "space-md": "1rem", "space-sm": "0.5rem", "gutter": "0.75rem" }, "fontFamily": { "title-md": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "title-lg": ["Inter"], "headline-md": ["Inter"], "headline-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "body-sm": ["Inter"] }, "fontSize": { "title-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "title-lg": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }] } } } }</script><style>
-    body {
-      min-height: max(884px, 100dvh);
+  <!-- Base reset & scroll styles -->
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+        background-color: #121317;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Tooltip styling */
+    #heatmap-tooltip {
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 100;
+    }
+    /* Cell hover & focus scale */
+    .heat-cell {
+      transition: transform 0.1s ease, filter 0.15s ease;
+    }
+    .heat-cell:hover {
+      transform: scale(1.25);
+      z-index: 20;
     }
   </style>
-  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_8px_24px_rgba(0,0,0,0.45)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="HabitHeat Icon" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W1jNCYAHXsCvFFKyFEuhQsf-JD9mDfjrsHIUplQS8kF1IivL8O14pf1UY_fT2aLp2lu9BxGfpRA_7CAtIlHGRfGPezRFy3-pi_WhWjG0nWMsqUxJkm2V6Bt3Ud9QAQ7dHBfuN02a_ERON_cPmkMWmf_OdZ3Ig2QJ5kaAUcuqG6qJnmWAnJMzkyCJtCaFzCPrtql_5JQE9RDJvhnD-RLLaIDGJd-NuafcBOyilsfEZwldZTtg-BqiZ9i8AH"/><div class="flex flex-col"><div class="flex items-baseline gap-1.5"><span class="font-title-lg text-title-lg text-on-surface tracking-tight">HabitHeat</span><span class="font-label-sm text-label-sm text-outline tracking-wider uppercase font-mono">v2.11</span></div><span class="font-label-sm text-label-sm text-secondary tracking-wide">Habits</span></div></div><div class="flex items-center gap-space-sm"><button class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">tune</span></button><button class="w-11 h-11 flex items-center justify-center rounded-full"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAugYpAgW-Dh1-lrshvvKek7slg7RqqigUw11WbXciFS-WjdwYVsPukWq-v_3Wiec7NcGndi-Epc4ydk7JKynNhAdTxTGXmMHlh3HHCB1s8a7TXxQYLfVhLYNqQdlhu1VsPNNsB2a9byeZiMLP4a9amxmquetTILdM7rpmhy96suynjLH0UL1FOjiza8dJZfQdfdh4nnln4R5grV9HxZiQJwJDfgxA5J1r60ZJgMQ8ZsHfSu4eZ-82cpw"/></button></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-10 space-y-space-md">
-<!-- Top Controls Section -->
-<div class="flex flex-col space-y-space-sm pt-2">
-<!-- Time Switcher Row -->
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-secondary text-[18px]">calendar_view_week</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Telemetry Granularity</span>
-</div>
-<div class="inline-flex p-0.5 rounded-full bg-surface-container-lowest shadow-inner">
-<button class="px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container-high text-on-surface shadow-sm transition-all duration-150">Year</button>
-<button class="px-3 py-1 rounded-full font-label-sm text-label-sm text-outline hover:text-on-surface transition-all duration-150">Month</button>
-<button class="px-3 py-1 rounded-full font-label-sm text-label-sm text-outline hover:text-on-surface transition-all duration-150">Week</button>
-</div>
-</div>
-<!-- Action Bar: Create Habit + Help + Active/Archive Filter -->
-<div class="flex items-center gap-space-sm">
-<button class="flex-1 h-11 px-space-md rounded-xl bg-primary-container hover:bg-inverse-primary active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(128,131,255,0.25)] text-on-primary">
-<span class="material-symbols-outlined text-[20px] font-bold">add</span>
-<span class="font-label-lg text-label-lg font-bold">Create habit</span>
-</button>
-<button aria-label="Help &amp; Guide" class="w-11 h-11 rounded-xl bg-surface-container-high hover:bg-surface-bright active:scale-95 flex items-center justify-center text-on-surface-variant transition-all">
-<span class="material-symbols-outlined text-[20px]">help_outline</span>
-</button>
-<div class="inline-flex h-11 p-1 rounded-xl bg-surface-container-high items-center">
-<button class="h-9 px-3 rounded-lg font-label-md text-label-md font-semibold bg-surface-container text-on-surface shadow-sm">Active</button>
-<button class="h-9 px-2.5 rounded-lg font-label-md text-label-md text-outline hover:text-on-surface transition-colors">Archived</button>
-</div>
-</div>
-<!-- Habit Search Bar -->
-<div class="relative w-full">
-<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
-<span class="material-symbols-outlined text-[20px]">search</span>
-</div>
-<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:bg-surface-container focus:outline-none transition-all shadow-sm" placeholder="Search habits by title..." type="text"/>
-</div>
-</div>
-<!-- Habit Card 1: PUSHUPS -->
-<div class="flex flex-col p-space-md rounded-2xl bg-surface-container-low shadow-[0_8px_24px_rgba(0,0,0,0.35)] space-y-space-md">
-<!-- Top Row: Year Pagination & Action settings -->
-<div class="flex items-center justify-between">
-<div class="inline-flex items-center gap-2 bg-surface-container-highest px-2.5 py-1 rounded-lg">
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button>
-<span class="font-label-md text-label-md font-semibold text-on-surface font-mono tracking-wide">2026</span>
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
-</div>
-<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
-<span class="material-symbols-outlined text-[18px]">tune</span>
-</button>
-</div>
-<!-- Habit Title & Info -->
-<div class="flex items-start gap-3">
-<div class="w-6 h-6 rounded-md bg-secondary-container flex items-center justify-center text-on-secondary-container mt-0.5">
-<span class="material-symbols-outlined text-[18px] font-bold">fitness_center</span>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2">
-<h2 class="font-title-lg text-title-lg uppercase tracking-tight text-on-surface">Pushups</h2>
-<span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-secondary-container text-on-secondary-container">DAILY</span>
-</div>
-<p class="font-body-md text-body-md text-outline">100 pushups daily repetition target</p>
-</div>
-</div>
-<!-- Heatmap Grid Matrix -->
-<div class="flex flex-col space-y-1.5 pt-1">
-<div class="flex items-center justify-between text-outline font-label-sm text-label-sm px-1 font-mono uppercase tracking-wider">
-<span>Sep</span>
-<span>Oct</span>
-<span>Nov</span>
-<span>Dec</span>
-</div>
-<!-- Heatmap Scrollable Canvas -->
-<div class="overflow-x-auto pb-1 -mx-1 px-1">
-<div class="inline-grid grid-rows-7 grid-flow-col gap-1.5">
-<!-- Column 1 (Sep W1) -->
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 2 (Sep W2) -->
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-60"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<!-- Column 3 (Sep W3) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.35)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<!-- Column 4 (Sep W4) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.35)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 5 (Oct W1) -->
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 6 (Oct W2) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<!-- Column 7 (Oct W3) -->
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<!-- Column 8 (Oct W4) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 9 (Nov W1) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 10 (Nov W2) -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<!-- Column 11 (Nov W3 - Current) -->
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<!-- Today Cell highlight -->
-<div class="w-4 h-4 rounded-sm bg-surface-bright flex items-center justify-center relative shadow-[0_0_12px_rgba(192,193,255,0.6)]">
-<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-</div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<!-- Column 12 (Nov W4 - Upcoming) -->
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<button class="w-full h-12 rounded-xl bg-primary-container hover:bg-inverse-primary active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-on-primary font-label-lg text-label-lg font-bold shadow-[0_4px_16px_rgba(128,131,255,0.2)]">
-<span class="material-symbols-outlined text-[20px]">add</span>
-<span>Log today</span>
-</button>
-<!-- Telemetry Stats Footer -->
-<div class="grid grid-cols-2 gap-space-sm pt-2 bg-surface-container-lowest/60 p-3 rounded-xl">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Streak</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">14 days</span>
-</div>
-</div>
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[18px]">done_all</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Total (2026)</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">48 days</span>
-</div>
-</div>
-<div class="flex items-center gap-2.5 pt-1">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-[18px]">pie_chart</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Rate (2026)</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">84% <span class="text-outline font-normal text-body-sm">(48/57)</span></span>
-</div>
-</div>
-<div class="flex items-center gap-2.5 pt-1">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed">
-<span class="material-symbols-outlined text-[18px]">military_tech</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Best Streak</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">21 days</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Habit Card 2: GITHUB CONTRIBUTIONS (Completed State) -->
-<div class="flex flex-col p-space-md rounded-2xl bg-surface-container-low shadow-[0_8px_24px_rgba(0,0,0,0.35)] space-y-space-md">
-<!-- Top Row: Year Pagination & Settings -->
-<div class="flex items-center justify-between">
-<div class="inline-flex items-center gap-2 bg-surface-container-highest px-2.5 py-1 rounded-lg">
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button>
-<span class="font-label-md text-label-md font-semibold text-on-surface font-mono tracking-wide">2026</span>
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
-</div>
-<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
-<span class="material-symbols-outlined text-[18px]">tune</span>
-</button>
-</div>
-<!-- Title & Description -->
-<div class="flex items-start gap-3">
-<div class="w-6 h-6 rounded-md bg-secondary flex items-center justify-center text-on-secondary mt-0.5 shadow-[0_0_10px_rgba(78,222,163,0.4)]">
-<span class="material-symbols-outlined text-[18px] font-bold">check</span>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2">
-<h2 class="font-title-lg text-title-lg uppercase tracking-tight text-on-surface">Github</h2>
-<span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-secondary-container text-on-secondary-container">DAILY CODE</span>
-</div>
-<p class="font-body-md text-body-md text-outline">10 commits or PR telemetry target</p>
-</div>
-</div>
-<!-- Heatmap Grid Matrix -->
-<div class="flex flex-col space-y-1.5 pt-1">
-<div class="flex items-center justify-between text-outline font-label-sm text-label-sm px-1 font-mono uppercase tracking-wider">
-<span>Sep</span>
-<span>Oct</span>
-<span>Nov</span>
-<span>Dec</span>
-</div>
-<div class="overflow-x-auto pb-1 -mx-1 px-1">
-<div class="inline-grid grid-rows-7 grid-flow-col gap-1.5">
-<!-- Highly active GitHub matrix with emerald shades -->
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-60"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
-<!-- Today Cell completed -->
-<div class="w-4 h-4 rounded-sm bg-secondary shadow-[0_0_12px_rgba(78,222,163,0.7)] flex items-center justify-center">
-<span class="w-1.5 h-1.5 rounded-full bg-on-secondary"></span>
-</div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-</div>
-</div>
-</div>
-<!-- Completed Today State Button -->
-<div class="w-full h-12 rounded-xl bg-secondary-container/30 flex items-center justify-center gap-2 text-secondary font-label-lg text-label-lg font-bold shadow-[0_2px_12px_rgba(0,165,114,0.15)]">
-<span class="material-symbols-outlined text-[20px]">task_alt</span>
-<span>Completed today</span>
-</div>
-<!-- Telemetry Stats Footer -->
-<div class="grid grid-cols-2 gap-space-sm pt-2 bg-surface-container-lowest/60 p-3 rounded-xl">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Streak</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">9 days</span>
-</div>
-</div>
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[18px]">done_all</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Total (2026)</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">62 days</span>
-</div>
-</div>
-<div class="flex items-center gap-2.5 pt-1">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-[18px]">pie_chart</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Rate (2026)</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">91% <span class="text-outline font-normal text-body-sm">(62/68)</span></span>
-</div>
-</div>
-<div class="flex items-center gap-2.5 pt-1">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed">
-<span class="material-symbols-outlined text-[18px]">military_tech</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Best Streak</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">34 days</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Habit Card 3: DEEP READING (Violet Palette) -->
-<div class="flex flex-col p-space-md rounded-2xl bg-surface-container-low shadow-[0_8px_24px_rgba(0,0,0,0.35)] space-y-space-md">
-<!-- Top Row -->
-<div class="flex items-center justify-between">
-<div class="inline-flex items-center gap-2 bg-surface-container-highest px-2.5 py-1 rounded-lg">
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button>
-<span class="font-label-md text-label-md font-semibold text-on-surface font-mono tracking-wide">2026</span>
-<button class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
-</div>
-<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
-<span class="material-symbols-outlined text-[18px]">tune</span>
-</button>
-</div>
-<!-- Title & Description -->
-<div class="flex items-start gap-3">
-<div class="w-6 h-6 rounded-md bg-tertiary-container flex items-center justify-center text-on-tertiary-container mt-0.5">
-<span class="material-symbols-outlined text-[18px] font-bold">menu_book</span>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2">
-<h2 class="font-title-lg text-title-lg uppercase tracking-tight text-on-surface">Deep Reading</h2>
-<span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-tertiary-container/40 text-tertiary">30 MIN</span>
-</div>
-<p class="font-body-md text-body-md text-outline">Non-fiction &amp; research papers daily</p>
-</div>
-</div>
-<!-- Heatmap Grid Matrix (Violet/Tertiary Theme) -->
-<div class="flex flex-col space-y-1.5 pt-1">
-<div class="flex items-center justify-between text-outline font-label-sm text-label-sm px-1 font-mono uppercase tracking-wider">
-<span>Sep</span>
-<span>Oct</span>
-<span>Nov</span>
-<span>Dec</span>
-</div>
-<div class="overflow-x-auto pb-1 -mx-1 px-1">
-<div class="inline-grid grid-rows-7 grid-flow-col gap-1.5">
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-70"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-90"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary opacity-80"></div>
-<div class="w-4 h-4 rounded-sm bg-tertiary shadow-[0_0_8px_rgba(208,188,255,0.4)]"></div>
-<!-- Today Cell reading -->
-<div class="w-4 h-4 rounded-sm bg-surface-bright flex items-center justify-center relative shadow-[0_0_12px_rgba(208,188,255,0.5)]">
-<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
-</div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-<div class="w-4 h-4 rounded-sm bg-surface-container-highest"></div>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<button class="w-full h-12 rounded-xl bg-tertiary-container hover:bg-tertiary active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-on-tertiary-container font-label-lg text-label-lg font-bold shadow-[0_4px_16px_rgba(160,120,255,0.2)]">
-<span class="material-symbols-outlined text-[20px]">add</span>
-<span>Log today</span>
-</button>
-<!-- Stats -->
-<div class="grid grid-cols-2 gap-space-sm pt-2 bg-surface-container-lowest/60 p-3 rounded-xl">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Streak</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">5 days</span>
-</div>
-</div>
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[18px]">done_all</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Total (2026)</span>
-<span class="font-title-md text-title-md text-on-surface font-mono">39 days</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Support & Global Telemetry Banner (Reference Section Match) -->
-<div class="flex flex-col p-space-md rounded-2xl bg-surface-container-high/60 space-y-3 relative overflow-hidden shadow-sm">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-[20px]">volunteer_activism</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">Enjoying HabitHeat?</span>
-</div>
-<span class="font-label-sm text-label-sm font-mono text-outline">INDIE DEV</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-      HabitHeat is free, privacy-first, and independently engineered. Your support fuels server telemetry and active development.
-    </p>
-<div class="flex items-center justify-between pt-1">
-<div class="flex items-center gap-2 text-outline font-label-sm text-label-sm font-mono">
-<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(78,222,163,0.8)]"></span>
-<span>51,570 global logs</span>
-</div>
-<button class="px-3.5 py-1.5 rounded-xl bg-surface-container-highest hover:bg-surface-bright active:scale-95 text-on-surface flex items-center gap-1.5 font-label-md text-label-md font-semibold transition-all shadow-sm">
-<span>Buy me a coffee</span>
-<span>☕</span>
-</button>
-</div>
-</div>
-</div>
-<script>
-  // Micro-interaction for habit logging
-  document.addEventListener('DOMContentLoaded', () => {
-    const logButtons = document.querySelectorAll('button:has(span:contains("Log today"))');
-    // Simple responsive ripple feedback on buttons
-    document.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        btn.classList.add('opacity-90');
-        setTimeout(() => btn.classList.remove('opacity-90'), 150);
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary": "#003824",
+            "tertiary-fixed-dim": "#d0bcff",
+            "surface-bright": "#38393d",
+            "tertiary-fixed": "#e9ddff",
+            "on-secondary-fixed-variant": "#005236",
+            "inverse-on-surface": "#2f3035",
+            "primary": "#c0c1ff",
+            "primary-fixed": "#e1e0ff",
+            "outline-variant": "#464554",
+            "on-tertiary": "#3c0091",
+            "tertiary": "#d0bcff",
+            "surface-variant": "#343439",
+            "on-tertiary-fixed": "#23005c",
+            "on-primary": "#1000a9",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "surface-container": "#1f1f24",
+            "on-primary-fixed": "#07006c",
+            "on-tertiary-container": "#340080",
+            "outline": "#908fa0",
+            "inverse-primary": "#494bd6",
+            "on-error": "#690005",
+            "on-secondary-fixed": "#002113",
+            "on-surface-variant": "#c7c4d7",
+            "surface": "#121317",
+            "inverse-surface": "#e3e2e7",
+            "surface-container-highest": "#343439",
+            "primary-container": "#8083ff",
+            "on-tertiary-fixed-variant": "#5516be",
+            "secondary-container": "#00a572",
+            "secondary-fixed-dim": "#4edea3",
+            "on-secondary-container": "#00311f",
+            "surface-dim": "#121317",
+            "secondary-fixed": "#6ffbbe",
+            "secondary": "#4edea3",
+            "primary-fixed-dim": "#c0c1ff",
+            "surface-tint": "#c0c1ff",
+            "on-primary-container": "#0d0096",
+            "on-background": "#e3e2e7",
+            "surface-container-lowest": "#0d0e12",
+            "error-container": "#93000a",
+            "error": "#ffb4ab",
+            "on-error-container": "#ffdad6",
+            "surface-container-high": "#292a2e",
+            "on-surface": "#e3e2e7",
+            "background": "#121317",
+            "surface-container-low": "#1a1b20",
+            "tertiary-container": "#a078ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xl": "1.75rem",
+            "space-lg": "1.25rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "0.75rem"
+          },
+          fontFamily: {
+            "title-md": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "title-lg": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          },
+          fontSize: {
+            "title-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body-md": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-lg": ["14px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-lg": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+            "title-lg": ["16px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "600" }],
+            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "headline-sm": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary selection:text-on-primary antialiased">
+
+  <!-- Fixed App Header -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_8px_24px_rgba(0,0,0,0.45)] border-b border-surface-container-high/40">
+    <div class="h-16 px-margin flex items-center justify-between max-w-4xl mx-auto w-full">
+      <div class="flex items-center gap-space-sm cursor-pointer" onclick="switchNavTab('habits')">
+        <!-- Logo SVG Icon -->
+        <div class="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary border border-secondary/30 shadow-[0_0_12px_rgba(78,222,163,0.3)]">
+          <span class="material-symbols-outlined text-[20px] font-bold">local_fire_department</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-baseline gap-1.5">
+            <span class="font-title-lg text-title-lg text-on-surface tracking-tight font-bold">HabitHeat</span>
+            <span class="font-label-sm text-label-sm text-outline tracking-wider uppercase font-mono">v2.11</span>
+          </div>
+          <span class="font-label-sm text-label-sm text-secondary tracking-wide flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            Telemetry
+          </span>
+        </div>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button id="btn-quick-export" title="Export & Backup Data" onclick="exportDataJson()" class="w-11 h-11 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">cloud_download</span>
+        </button>
+        <button id="btn-header-help" title="Guide & Help" onclick="openHelpModal()" class="w-11 h-11 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">help_outline</span>
+        </button>
+        <div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline/20 flex items-center justify-center text-primary font-bold text-sm shadow-inner">
+          <span class="material-symbols-outlined text-[22px]">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="flex flex-col relative w-full pt-20 pb-28 bg-surface min-h-screen max-w-4xl mx-auto">
+    
+    <!-- ============================================== -->
+    <!-- HABITS VIEW TAB -->
+    <!-- ============================================== -->
+    <div id="view-habits" class="flex flex-col w-full px-margin space-y-space-md">
+      
+      <!-- Top Controls Section -->
+      <div class="flex flex-col space-y-space-sm pt-2">
+        
+        <!-- Time Switcher Row -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-[18px]">calendar_view_week</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Telemetry Granularity</span>
+          </div>
+          <div class="inline-flex p-0.5 rounded-full bg-surface-container-lowest shadow-inner border border-surface-container-high/50">
+            <button id="granularity-year" onclick="setGranularity('year')" class="px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container-high text-on-surface shadow-sm transition-all duration-150">Year</button>
+            <button id="granularity-month" onclick="setGranularity('month')" class="px-3 py-1 rounded-full font-label-sm text-label-sm text-outline hover:text-on-surface transition-all duration-150">Month</button>
+            <button id="granularity-week" onclick="setGranularity('week')" class="px-3 py-1 rounded-full font-label-sm text-label-sm text-outline hover:text-on-surface transition-all duration-150">Week</button>
+          </div>
+        </div>
+
+        <!-- Action Bar: Create Habit + Help + Active/Archive Filter -->
+        <div class="flex items-center gap-space-sm">
+          <button onclick="openCreateModal()" class="flex-1 h-11 px-space-md rounded-xl bg-primary-container hover:bg-inverse-primary active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(128,131,255,0.25)] text-on-primary">
+            <span class="material-symbols-outlined text-[20px] font-bold">add</span>
+            <span class="font-label-lg text-label-lg font-bold">Create habit</span>
+          </button>
+          
+          <button onclick="openHelpModal()" aria-label="Help & Guide" class="w-11 h-11 rounded-xl bg-surface-container-high hover:bg-surface-bright active:scale-95 flex items-center justify-center text-on-surface-variant transition-all">
+            <span class="material-symbols-outlined text-[20px]">info</span>
+          </button>
+          
+          <div class="inline-flex h-11 p-1 rounded-xl bg-surface-container-high items-center border border-surface-container-high/60">
+            <button id="tab-active" onclick="setFilterStatus('active')" class="h-9 px-3 rounded-lg font-label-md text-label-md font-semibold bg-surface-container text-on-surface shadow-sm transition-all">Active</button>
+            <button id="tab-archived" onclick="setFilterStatus('archived')" class="h-9 px-2.5 rounded-lg font-label-md text-label-md text-outline hover:text-on-surface transition-all">Archived</button>
+          </div>
+        </div>
+
+        <!-- Habit Search Bar -->
+        <div class="relative w-full">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </div>
+          <input id="search-input" oninput="handleSearch(this.value)" class="w-full h-11 pl-10 pr-10 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:bg-surface-container focus:ring-1 focus:ring-primary/40 focus:outline-none transition-all shadow-sm border border-surface-container-high/40" placeholder="Search habits by title or tag..." type="text"/>
+          <button id="btn-clear-search" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-outline hover:text-on-surface">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Habit Cards Container (Rendered Dynamically via JS) -->
+      <div id="habits-list" class="flex flex-col space-y-space-md">
+        <!-- Dynamic Cards injected here -->
+      </div>
+
+      <!-- Support & Global Telemetry Banner -->
+      <div class="flex flex-col p-space-md rounded-2xl bg-surface-container-high/60 border border-surface-container-high/40 space-y-3 relative overflow-hidden shadow-sm mt-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">volunteer_activism</span>
+            <span class="font-title-md text-title-md text-on-surface font-semibold">Enjoying HabitHeat?</span>
+          </div>
+          <span class="font-label-sm text-label-sm font-mono text-outline">INDIE DEV</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          HabitHeat is free, privacy-first, and independently engineered. Your telemetry data is stored safely right in your browser.
+        </p>
+        <div class="flex items-center justify-between pt-1">
+          <div class="flex items-center gap-2 text-outline font-label-sm text-label-sm font-mono">
+            <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(78,222,163,0.8)]"></span>
+            <span id="global-logs-counter">51,570 global logs</span>
+          </div>
+          <button onclick="openCoffeeModal()" class="px-3.5 py-1.5 rounded-xl bg-surface-container-highest hover:bg-surface-bright active:scale-95 text-on-surface flex items-center gap-1.5 font-label-md text-label-md font-semibold transition-all shadow-sm">
+            <span>Buy me a coffee</span>
+            <span>☕</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- ANALYTICS VIEW TAB -->
+    <!-- ============================================== -->
+    <div id="view-analytics" class="hidden flex-col w-full px-margin space-y-space-md">
+      
+      <div class="flex items-center justify-between pt-2">
+        <div>
+          <h2 class="text-xl font-bold tracking-tight text-on-surface">Telemetry Analytics</h2>
+          <p class="text-outline text-xs mt-0.5">Aggregated metrics & consistency insights</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="exportDataJson()" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-xs font-semibold hover:bg-surface-bright flex items-center gap-1 text-on-surface">
+            <span class="material-symbols-outlined text-[16px]">download</span> Export
+          </button>
+          <label class="px-3 py-1.5 rounded-lg bg-surface-container-high text-xs font-semibold hover:bg-surface-bright flex items-center gap-1 text-on-surface cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">upload</span> Import
+            <input type="file" accept=".json" class="hidden" onchange="importDataJson(event)"/>
+          </label>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-high/40 flex flex-col">
+          <span class="text-xs text-outline font-mono uppercase">Active Habits</span>
+          <span id="kpi-active-count" class="text-2xl font-bold font-mono text-primary mt-1">3</span>
+          <span class="text-[11px] text-outline mt-0.5">Currently tracking</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-high/40 flex flex-col">
+          <span class="text-xs text-outline font-mono uppercase">2026 Total Logs</span>
+          <span id="kpi-total-logs" class="text-2xl font-bold font-mono text-secondary mt-1">149</span>
+          <span class="text-[11px] text-outline mt-0.5">Recorded completions</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-high/40 flex flex-col">
+          <span class="text-xs text-outline font-mono uppercase">Consistency</span>
+          <span id="kpi-consistency" class="text-2xl font-bold font-mono text-tertiary mt-1">87%</span>
+          <span class="text-[11px] text-outline mt-0.5">Average success rate</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-high/40 flex flex-col">
+          <span class="text-xs text-outline font-mono uppercase">Top Streak</span>
+          <span id="kpi-best-streak" class="text-2xl font-bold font-mono text-secondary-fixed mt-1">34d</span>
+          <span class="text-[11px] text-outline mt-0.5">Personal best</span>
+        </div>
+      </div>
+
+      <!-- Day of Week Distribution Chart -->
+      <div class="bg-surface-container-low p-4 rounded-2xl border border-surface-container-high/40 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-on-surface">Weekly Distribution Pattern</span>
+          <span class="text-xs text-outline font-mono">By completions</span>
+        </div>
+        <div id="chart-dow-bars" class="grid grid-cols-7 gap-2 pt-2 items-end h-36">
+          <!-- Bars injected via JS -->
+        </div>
+      </div>
+
+      <!-- Monthly Trend Breakdown Chart -->
+      <div class="bg-surface-container-low p-4 rounded-2xl border border-surface-container-high/40 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-on-surface">2026 Monthly Velocity</span>
+          <span class="text-xs text-outline font-mono">Jan - Dec</span>
+        </div>
+        <div id="chart-monthly-bars" class="grid grid-cols-12 gap-1.5 pt-2 items-end h-32">
+          <!-- Monthly bars injected via JS -->
+        </div>
+      </div>
+
+      <!-- Habit Performance Leaderboard -->
+      <div class="bg-surface-container-low p-4 rounded-2xl border border-surface-container-high/40 space-y-3">
+        <span class="text-sm font-semibold text-on-surface">Habit Performance Leaderboard</span>
+        <div id="analytics-leaderboard" class="space-y-2 pt-1">
+          <!-- Leaderboard rows injected via JS -->
+        </div>
+      </div>
+
+      <!-- Backup and Reset Options -->
+      <div class="p-4 rounded-xl bg-surface-container-high/30 border border-surface-container-high/40 flex items-center justify-between">
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-on-surface">Reset & Seed Data</span>
+          <span class="text-[11px] text-outline">Restore default sample habits and records</span>
+        </div>
+        <button onclick="resetToSampleData()" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-xs font-semibold text-error hover:bg-error-container/40 transition-colors">
+          Reset Demo Data
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Floating Cell Tooltip -->
+  <div id="heatmap-tooltip" class="fixed opacity-0 pointer-events-none px-2.5 py-1.5 rounded-lg bg-surface-container-highest/95 backdrop-blur-md border border-outline-variant/60 shadow-xl text-on-surface font-mono text-xs flex flex-col gap-0.5">
+    <div id="tooltip-date" class="font-bold text-[11px] text-on-surface">Date</div>
+    <div id="tooltip-status" class="text-[10px] text-outline">Status</div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-8px_24px_rgba(0,0,0,0.45)] border-t border-surface-container-high/40">
+    <div class="flex items-center justify-center gap-4 h-16 px-margin max-w-md mx-auto">
+      <button id="nav-btn-habits" onclick="switchNavTab('habits')" class="flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-secondary bg-surface-container-high shadow-[0_0_16px_rgba(78,222,163,0.2)]">
+        <span class="material-symbols-outlined text-[22px]">check_box</span>
+        <span class="font-label-md text-label-md font-semibold">Habits</span>
+      </button>
+      <button id="nav-btn-analytics" onclick="switchNavTab('analytics')" class="flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-outline hover:text-on-surface">
+        <span class="material-symbols-outlined text-[22px]">trending_up</span>
+        <span class="font-label-md text-label-md font-semibold">Analytics</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- MODAL: CREATE / EDIT HABIT -->
+  <!-- ============================================== -->
+  <div id="modal-habit" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-surface-container-low border border-surface-container-high rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto no-scrollbar">
+      <div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+        <h3 id="modal-habit-title" class="text-lg font-bold text-on-surface">Create New Habit</h3>
+        <button onclick="closeHabitModal()" class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="form-habit" onsubmit="handleHabitSubmit(event)" class="space-y-4">
+        <input type="hidden" id="habit-form-id"/>
+
+        <div>
+          <label class="block text-xs font-semibold text-outline uppercase font-mono mb-1.5">Habit Title</label>
+          <input type="text" id="habit-name" required placeholder="e.g. Morning Meditation, Reading, Running" class="w-full h-11 px-3.5 rounded-xl bg-surface-container text-on-surface border border-outline-variant/40 focus:border-primary focus:outline-none text-sm"/>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-outline uppercase font-mono mb-1.5">Daily Target / Subtitle</label>
+          <input type="text" id="habit-target" required placeholder="e.g. 20 minutes daily, 50 pushups" class="w-full h-11 px-3.5 rounded-xl bg-surface-container text-on-surface border border-outline-variant/40 focus:border-primary focus:outline-none text-sm"/>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-outline uppercase font-mono mb-1.5">Category Tag / Badge</label>
+          <input type="text" id="habit-category" required placeholder="e.g. DAILY, HEALTH, CODING, 30 MIN" class="w-full h-11 px-3.5 rounded-xl bg-surface-container text-on-surface border border-outline-variant/40 focus:border-primary focus:outline-none text-sm uppercase"/>
+        </div>
+
+        <!-- Theme Color Selection -->
+        <div>
+          <label class="block text-xs font-semibold text-outline uppercase font-mono mb-1.5">Color Palette</label>
+          <div class="grid grid-cols-5 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="habit-color" value="emerald" checked class="peer sr-only"/>
+              <div class="h-10 rounded-xl bg-[#4edea3]/20 border-2 border-transparent peer-checked:border-[#4edea3] peer-checked:bg-[#4edea3]/40 flex items-center justify-center text-[#4edea3] font-bold text-xs transition-all">
+                Emerald
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="habit-color" value="violet" class="peer sr-only"/>
+              <div class="h-10 rounded-xl bg-[#d0bcff]/20 border-2 border-transparent peer-checked:border-[#d0bcff] peer-checked:bg-[#d0bcff]/40 flex items-center justify-center text-[#d0bcff] font-bold text-xs transition-all">
+                Violet
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="habit-color" value="sky" class="peer sr-only"/>
+              <div class="h-10 rounded-xl bg-[#38bdf8]/20 border-2 border-transparent peer-checked:border-[#38bdf8] peer-checked:bg-[#38bdf8]/40 flex items-center justify-center text-[#38bdf8] font-bold text-xs transition-all">
+                Cyan
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="habit-color" value="amber" class="peer sr-only"/>
+              <div class="h-10 rounded-xl bg-[#fbbf24]/20 border-2 border-transparent peer-checked:border-[#fbbf24] peer-checked:bg-[#fbbf24]/40 flex items-center justify-center text-[#fbbf24] font-bold text-xs transition-all">
+                Amber
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="habit-color" value="rose" class="peer sr-only"/>
+              <div class="h-10 rounded-xl bg-[#fb7185]/20 border-2 border-transparent peer-checked:border-[#fb7185] peer-checked:bg-[#fb7185]/40 flex items-center justify-center text-[#fb7185] font-bold text-xs transition-all">
+                Rose
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Icon Selector -->
+        <div>
+          <label class="block text-xs font-semibold text-outline uppercase font-mono mb-1.5">Select Icon</label>
+          <div id="icon-picker" class="grid grid-cols-6 gap-2">
+            <!-- Icon options injected via JS -->
+          </div>
+          <input type="hidden" id="habit-icon" value="fitness_center"/>
+        </div>
+
+        <div class="flex items-center gap-3 pt-3">
+          <button type="button" onclick="closeHabitModal()" class="flex-1 h-11 rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface font-semibold text-sm transition-all">
+            Cancel
+          </button>
+          <button type="submit" class="flex-1 h-11 rounded-xl bg-primary-container hover:bg-inverse-primary text-on-primary font-bold text-sm shadow-md transition-all">
+            Save Habit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: HABIT TUNE / SETTINGS -->
+  <!-- ============================================== -->
+  <div id="modal-tune" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-surface-container-low border border-surface-container-high rounded-2xl w-full max-w-sm p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+        <h3 id="tune-habit-name" class="text-base font-bold text-on-surface">Manage Habit</h3>
+        <button onclick="closeTuneModal()" class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="triggerEditFromTune()" class="w-full h-11 px-3 rounded-xl bg-surface-container hover:bg-surface-bright flex items-center gap-3 text-sm text-on-surface transition-all">
+          <span class="material-symbols-outlined text-[20px] text-primary">edit</span>
+          <span>Edit Habit Details</span>
+        </button>
+        <button onclick="triggerArchiveFromTune()" id="btn-tune-archive" class="w-full h-11 px-3 rounded-xl bg-surface-container hover:bg-surface-bright flex items-center gap-3 text-sm text-on-surface transition-all">
+          <span class="material-symbols-outlined text-[20px] text-tertiary">archive</span>
+          <span id="tune-archive-text">Archive Habit</span>
+        </button>
+        <button onclick="triggerResetLogsFromTune()" class="w-full h-11 px-3 rounded-xl bg-surface-container hover:bg-surface-bright flex items-center gap-3 text-sm text-on-surface transition-all">
+          <span class="material-symbols-outlined text-[20px] text-outline">history</span>
+          <span>Clear All Logs (Reset)</span>
+        </button>
+        <button onclick="triggerDeleteFromTune()" class="w-full h-11 px-3 rounded-xl bg-error-container/20 hover:bg-error-container/40 flex items-center gap-3 text-sm text-error font-semibold transition-all">
+          <span class="material-symbols-outlined text-[20px]">delete</span>
+          <span>Delete Habit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: HELP & GUIDE -->
+  <!-- ============================================== -->
+  <div id="modal-help" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-surface-container-low border border-surface-container-high rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar">
+      <div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[22px]">info</span>
+          <h3 class="text-lg font-bold text-on-surface">HabitHeat Guide</h3>
+        </div>
+        <button onclick="closeHelpModal()" class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+        <div class="p-3 rounded-xl bg-surface-container space-y-1">
+          <div class="font-semibold text-on-surface flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-secondary">grid_view</span>
+            Telemetry Heatmap Matrix
+          </div>
+          <p class="text-xs text-outline">Each cell represents a single day. Columns flow by weeks (7 rows, Sunday to Saturday). Hover or tap any cell to inspect the date and click it to toggle completion.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-surface-container space-y-1">
+          <div class="font-semibold text-on-surface flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-primary">local_fire_department</span>
+            Streaks & Telemetry Math
+          </div>
+          <p class="text-xs text-outline">Streaks increment each consecutive day you complete the target. Missing a day resets the active streak back to zero, while your Best Streak remains recorded forever.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-surface-container space-y-1">
+          <div class="font-semibold text-on-surface flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-tertiary">calendar_view_week</span>
+            Granularity Modes
+          </div>
+          <p class="text-xs text-outline">Toggle between <strong>Year</strong> (full 52-week contribution matrix), <strong>Month</strong> (calendar grid), and <strong>Week</strong> (large day-card view) using the switcher at the top.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-surface-container space-y-1">
+          <div class="font-semibold text-on-surface flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-secondary-fixed">security</span>
+            100% Privacy & Local Storage
+          </div>
+          <p class="text-xs text-outline">All your telemetry stays directly on your device via browser LocalStorage. You can export or import your database anytime from the Analytics tab.</p>
+        </div>
+      </div>
+
+      <button onclick="closeHelpModal()" class="w-full h-11 rounded-xl bg-primary-container hover:bg-inverse-primary text-on-primary font-bold text-sm transition-all shadow-md mt-2">
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: BUY ME A COFFEE -->
+  <!-- ============================================== -->
+  <div id="modal-coffee" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-surface-container-low border border-surface-container-high rounded-2xl w-full max-w-sm p-6 shadow-2xl space-y-4 text-center">
+      <div class="w-14 h-14 rounded-2xl bg-secondary/20 text-secondary mx-auto flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(78,222,163,0.3)]">
+        ☕
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-on-surface">Fuel HabitHeat</h3>
+        <p class="text-xs text-outline mt-1 leading-relaxed">
+          Crafted with passion for minimalist productivity. Thanks for keeping the telemetry burning!
+        </p>
+      </div>
+
+      <div class="p-3 rounded-xl bg-surface-container text-xs text-secondary font-mono">
+        51,570+ habit logs recorded globally
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeCoffeeModal()" class="flex-1 h-11 rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface font-semibold text-sm transition-all">
+          Close
+        </button>
+        <button onclick="alert('Thank you so much for your support! 🌟'); closeCoffeeModal();" class="flex-1 h-11 rounded-xl bg-secondary text-on-secondary font-bold text-sm shadow-[0_0_12px_rgba(78,222,163,0.4)] transition-all">
+          Say Thanks ❤️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- CORE JAVASCRIPT APPLICATION -->
+  <!-- ============================================== -->
+  <script>
+    /* Theme color mappings */
+    const THEMES = {
+      emerald: {
+        id: 'emerald',
+        name: 'Emerald',
+        hex: '#4edea3',
+        bgFilled: 'bg-secondary',
+        text: 'text-secondary',
+        bgBadge: 'bg-secondary-container',
+        textBadge: 'text-on-secondary-container',
+        bgContainer: 'bg-secondary-container',
+        glow: 'shadow-[0_0_8px_rgba(78,222,163,0.4)]',
+        btnBg: 'bg-primary-container',
+        btnHover: 'hover:bg-inverse-primary',
+        btnText: 'text-on-primary'
+      },
+      violet: {
+        id: 'violet',
+        name: 'Violet',
+        hex: '#d0bcff',
+        bgFilled: 'bg-tertiary',
+        text: 'text-tertiary',
+        bgBadge: 'bg-tertiary-container/40',
+        textBadge: 'text-tertiary',
+        bgContainer: 'bg-tertiary-container',
+        glow: 'shadow-[0_0_8px_rgba(208,188,255,0.4)]',
+        btnBg: 'bg-tertiary-container',
+        btnHover: 'hover:bg-tertiary',
+        btnText: 'text-on-tertiary-container'
+      },
+      sky: {
+        id: 'sky',
+        name: 'Cyan',
+        hex: '#38bdf8',
+        bgFilled: 'bg-sky-400',
+        text: 'text-sky-400',
+        bgBadge: 'bg-sky-950/70',
+        textBadge: 'text-sky-300',
+        bgContainer: 'bg-sky-900',
+        glow: 'shadow-[0_0_8px_rgba(56,189,248,0.4)]',
+        btnBg: 'bg-sky-500',
+        btnHover: 'hover:bg-sky-400',
+        btnText: 'text-sky-950'
+      },
+      amber: {
+        id: 'amber',
+        name: 'Amber',
+        hex: '#fbbf24',
+        bgFilled: 'bg-amber-400',
+        text: 'text-amber-400',
+        bgBadge: 'bg-amber-950/70',
+        textBadge: 'text-amber-300',
+        bgContainer: 'bg-amber-900',
+        glow: 'shadow-[0_0_8px_rgba(251,191,36,0.4)]',
+        btnBg: 'bg-amber-500',
+        btnHover: 'hover:bg-amber-400',
+        btnText: 'text-amber-950'
+      },
+      rose: {
+        id: 'rose',
+        name: 'Rose',
+        hex: '#fb7185',
+        bgFilled: 'bg-rose-400',
+        text: 'text-rose-400',
+        bgBadge: 'bg-rose-950/70',
+        textBadge: 'text-rose-300',
+        bgContainer: 'bg-rose-900',
+        glow: 'shadow-[0_0_8px_rgba(251,113,133,0.4)]',
+        btnBg: 'bg-rose-500',
+        btnHover: 'hover:bg-rose-400',
+        btnText: 'text-rose-950'
+      }
+    };
+
+    const ICON_PRESETS = [
+      'fitness_center', 'terminal', 'menu_book', 'directions_run',
+      'water_drop', 'bedtime', 'self_improvement', 'brush',
+      'code', 'psychology', 'sports_gymnastics', 'timer'
+    ];
+
+    const STORAGE_KEY = 'habitheat_habits_v2.11';
+    
+    // Application State
+    let appState = {
+      habits: [],
+      granularity: 'year', // 'year' | 'month' | 'week'
+      filterStatus: 'active', // 'active' | 'archived'
+      searchQuery: '',
+      activeTab: 'habits', // 'habits' | 'analytics'
+      currentYear: 2026,
+      currentTuneId: null
+    };
+
+    /* Utility: Format Date to YYYY-MM-DD */
+    function formatDateStr(d) {
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    /* Reference today */
+    function getToday() {
+      // Use current date or fallback to 2026
+      const now = new Date();
+      return now;
+    }
+
+    /* Seed initial sample habits matching the user's mock exactly */
+    function generateSeedHabits() {
+      const today = getToday();
+      const pushupLogs = {};
+      const githubLogs = {};
+      const readingLogs = {};
+
+      // Seed Pushups: active 14 day streak ending today
+      for (let i = 0; i < 60; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        const ds = formatDateStr(d);
+        if (i < 14) {
+          pushupLogs[ds] = true;
+        } else if ((i % 3 !== 0) && i < 50) {
+          pushupLogs[ds] = true;
+        }
+      }
+
+      // Seed GitHub: 9 day streak including today already completed
+      for (let i = 0; i < 70; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        const ds = formatDateStr(d);
+        if (i < 9) {
+          githubLogs[ds] = true;
+        } else if (i % 4 !== 1 && i < 65) {
+          githubLogs[ds] = true;
+        }
+      }
+
+      // Seed Deep Reading: 5 day streak (today not logged yet)
+      for (let i = 1; i < 50; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        const ds = formatDateStr(d);
+        if (i <= 5) {
+          readingLogs[ds] = true;
+        } else if (i % 2 === 0 && i < 45) {
+          readingLogs[ds] = true;
+        }
+      }
+
+      return [
+        {
+          id: 'habit_pushups',
+          name: 'Pushups',
+          target: '100 pushups daily repetition target',
+          category: 'DAILY',
+          icon: 'fitness_center',
+          theme: 'emerald',
+          selectedYear: 2026,
+          isArchived: false,
+          logs: pushupLogs
+        },
+        {
+          id: 'habit_github',
+          name: 'Github',
+          target: '10 commits or PR telemetry target',
+          category: 'DAILY CODE',
+          icon: 'terminal',
+          theme: 'emerald',
+          selectedYear: 2026,
+          isArchived: false,
+          logs: githubLogs
+        },
+        {
+          id: 'habit_reading',
+          name: 'Deep Reading',
+          target: 'Non-fiction & research papers daily',
+          category: '30 MIN',
+          icon: 'menu_book',
+          theme: 'violet',
+          selectedYear: 2026,
+          isArchived: false,
+          logs: readingLogs
+        }
+      ];
+    }
+
+    /* Storage load/save */
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            appState.habits = parsed;
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Could not parse saved habits, using default seeds:', err);
+      }
+      appState.habits = generateSeedHabits();
+      saveState();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState.habits));
+      } catch (err) {
+        console.error('Failed to save state to localStorage:', err);
+      }
+    }
+
+    /* Telemetry Math Engine */
+    function computeTelemetry(habit, year) {
+      const today = getToday();
+      const todayStr = formatDateStr(today);
+      const logs = habit.logs || {};
+
+      // Total completed in selected year
+      const yearPrefix = `${year}-`;
+      let totalInYear = 0;
+      Object.keys(logs).forEach(dateStr => {
+        if (dateStr.startsWith(yearPrefix) && logs[dateStr]) {
+          totalInYear++;
+        }
+      });
+
+      // Days elapsed in selected year
+      let totalDaysDenominator = 365;
+      const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      const daysInYear = isLeap ? 366 : 365;
+
+      const currentYear = today.getFullYear();
+      if (year < currentYear) {
+        totalDaysDenominator = daysInYear;
+      } else if (year > currentYear) {
+        totalDaysDenominator = 1;
+      } else {
+        // Current year: calculate day of year up to today
+        const startOfYear = new Date(year, 0, 1);
+        const diff = today - startOfYear;
+        totalDaysDenominator = Math.max(1, Math.floor(diff / (86400000)) + 1);
+      }
+
+      const ratePct = totalDaysDenominator > 0 
+        ? Math.min(100, Math.round((totalInYear / totalDaysDenominator) * 100))
+        : 0;
+
+      // Active Streak calculation
+      let currentStreak = 0;
+      let checkDate = new Date(today);
+      const isCompletedToday = !!logs[todayStr];
+
+      if (!isCompletedToday) {
+        checkDate.setDate(checkDate.getDate() - 1);
+      }
+
+      while (true) {
+        const dStr = formatDateStr(checkDate);
+        if (logs[dStr]) {
+          currentStreak++;
+          checkDate.setDate(checkDate.getDate() - 1);
+        } else {
+          break;
+        }
+      }
+
+      // Best Streak calculation across all time
+      const sortedDates = Object.keys(logs)
+        .filter(k => logs[k])
+        .sort();
+
+      let bestStreak = 0;
+      let tempStreak = 0;
+      let prevDate = null;
+
+      sortedDates.forEach(dStr => {
+        const d = new Date(dStr);
+        if (!prevDate) {
+          tempStreak = 1;
+        } else {
+          const diffDays = Math.round((d - prevDate) / (86400000));
+          if (diffDays === 1) {
+            tempStreak++;
+          } else if (diffDays > 1) {
+            tempStreak = 1;
+          }
+        }
+        if (tempStreak > bestStreak) bestStreak = tempStreak;
+        prevDate = d;
+      });
+
+      // If best streak is lower than current streak, update it
+      if (currentStreak > bestStreak) bestStreak = currentStreak;
+
+      return {
+        totalInYear,
+        totalDaysDenominator,
+        ratePct,
+        currentStreak,
+        bestStreak,
+        isCompletedToday
+      };
+    }
+
+    /* Render Granularity: Year, Month, Week */
+    function setGranularity(mode) {
+      appState.granularity = mode;
+      ['year', 'month', 'week'].forEach(m => {
+        const btn = document.getElementById(`granularity-${m}`);
+        if (m === mode) {
+          btn.className = 'px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container-high text-on-surface shadow-sm transition-all duration-150';
+        } else {
+          btn.className = 'px-3 py-1 rounded-full font-label-sm text-label-sm text-outline hover:text-on-surface transition-all duration-150';
+        }
+      });
+      renderHabits();
+    }
+
+    /* Filter: Active vs Archived */
+    function setFilterStatus(status) {
+      appState.filterStatus = status;
+      const tabActive = document.getElementById('tab-active');
+      const tabArchived = document.getElementById('tab-archived');
+
+      if (status === 'active') {
+        tabActive.className = 'h-9 px-3 rounded-lg font-label-md text-label-md font-semibold bg-surface-container text-on-surface shadow-sm transition-all';
+        tabArchived.className = 'h-9 px-2.5 rounded-lg font-label-md text-label-md text-outline hover:text-on-surface transition-all';
+      } else {
+        tabArchived.className = 'h-9 px-3 rounded-lg font-label-md text-label-md font-semibold bg-surface-container text-on-surface shadow-sm transition-all';
+        tabActive.className = 'h-9 px-2.5 rounded-lg font-label-md text-label-md text-outline hover:text-on-surface transition-all';
+      }
+      renderHabits();
+    }
+
+    /* Search Handler */
+    function handleSearch(query) {
+      appState.searchQuery = (query || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('btn-clear-search');
+      if (appState.searchQuery) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderHabits();
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('search-input');
+      input.value = '';
+      handleSearch('');
+    }
+
+    /* Navigation Tabs */
+    function switchNavTab(tab) {
+      appState.activeTab = tab;
+      const habitsView = document.getElementById('view-habits');
+      const analyticsView = document.getElementById('view-analytics');
+      const habitsBtn = document.getElementById('nav-btn-habits');
+      const analyticsBtn = document.getElementById('nav-btn-analytics');
+
+      if (tab === 'habits') {
+        habitsView.classList.remove('hidden');
+        habitsView.classList.add('flex');
+        analyticsView.classList.add('hidden');
+        analyticsView.classList.remove('flex');
+
+        habitsBtn.className = 'flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-secondary bg-surface-container-high shadow-[0_0_16px_rgba(78,222,163,0.2)]';
+        analyticsBtn.className = 'flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-outline hover:text-on-surface';
+        renderHabits();
+      } else {
+        habitsView.classList.add('hidden');
+        habitsView.classList.remove('flex');
+        analyticsView.classList.remove('hidden');
+        analyticsView.classList.add('flex');
+
+        analyticsBtn.className = 'flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-secondary bg-surface-container-high shadow-[0_0_16px_rgba(78,222,163,0.2)]';
+        habitsBtn.className = 'flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-outline hover:text-on-surface';
+        renderAnalytics();
+      }
+    }
+
+    /* Generate Heatmap Matrix HTML for Year View */
+    function renderYearHeatmap(habit) {
+      const year = habit.selectedYear || 2026;
+      const today = getToday();
+      const todayStr = formatDateStr(today);
+      const theme = THEMES[habit.theme] || THEMES.emerald;
+      const logs = habit.logs || {};
+
+      // Generate 52/53 weeks of the year starting from the first Sunday on or before Jan 1
+      const startDate = new Date(year, 0, 1);
+      startDate.setDate(startDate.getDate() - startDate.getDay());
+
+      const endDate = new Date(year, 11, 31);
+      endDate.setDate(endDate.getDate() + (6 - endDate.getDay()));
+
+      const totalWeeks = Math.ceil((endDate - startDate) / (7 * 86400000));
+      
+      const columns = [];
+      const monthHeaders = [];
+      let lastMonth = -1;
+
+      for (let w = 0; w < totalWeeks; w++) {
+        const weekDays = [];
+        let monthNameForWeek = '';
+
+        for (let d = 0; d < 7; d++) {
+          const cellDate = new Date(startDate);
+          cellDate.setDate(cellDate.getDate() + (w * 7 + d));
+          const dateStr = formatDateStr(cellDate);
+          const isCurrentYear = cellDate.getFullYear() === year;
+          const isToday = dateStr === todayStr;
+          const isCompleted = !!logs[dateStr];
+
+          // Month header detection (first week where a new month appears)
+          if (cellDate.getMonth() !== lastMonth && cellDate.getFullYear() === year) {
+            lastMonth = cellDate.getMonth();
+            monthNameForWeek = cellDate.toLocaleString('default', { month: 'short' });
+          }
+
+          weekDays.push({
+            date: cellDate,
+            dateStr,
+            isCurrentYear,
+            isToday,
+            isCompleted
+          });
+        }
+
+        columns.push(weekDays);
+        monthHeaders.push(monthNameForWeek);
+      }
+
+      // Build Columns HTML
+      let columnsHtml = '';
+      columns.forEach((week, wIndex) => {
+        let colCells = '';
+        week.forEach(day => {
+          let cellClass = 'w-4 h-4 rounded-sm transition-all heat-cell cursor-pointer ';
+          let innerHtml = '';
+
+          if (!day.isCurrentYear) {
+            cellClass += 'opacity-20 bg-surface-container-highest pointer-events-none ';
+          } else if (day.isToday) {
+            if (day.isCompleted) {
+              cellClass += `${theme.bgFilled} ${theme.glow} flex items-center justify-center ring-2 ring-secondary/50 `;
+              innerHtml = `<span class="w-1.5 h-1.5 rounded-full bg-on-secondary"></span>`;
+            } else {
+              cellClass += `bg-surface-bright flex items-center justify-center relative shadow-[0_0_12px_rgba(192,193,255,0.6)] ring-1 ring-primary `;
+              innerHtml = `<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>`;
+            }
+          } else if (day.isCompleted) {
+            cellClass += `${theme.bgFilled} ${theme.glow} opacity-90 hover:opacity-100 `;
+          } else {
+            cellClass += `bg-surface-container-highest hover:bg-surface-bright `;
+          }
+
+          const formattedLabel = day.date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+          const statusLabel = day.isCompleted ? '✓ Completed' : '○ Not logged';
+
+          colCells += `
+            <div class="${cellClass}"
+                 data-date="${day.dateStr}"
+                 data-habit-id="${habit.id}"
+                 data-tooltip-date="${formattedLabel}"
+                 data-tooltip-status="${statusLabel}"
+                 onclick="toggleCellDate('${habit.id}', '${day.dateStr}')"
+                 onmouseenter="showTooltip(event)"
+                 onmouseleave="hideTooltip()"
+                 ontouchstart="showTooltip(event)">
+              ${innerHtml}
+            </div>
+          `;
+        });
+
+        columnsHtml += `<div class="flex flex-col gap-1.5">${colCells}</div>`;
+      });
+
+      // Build Month Header row
+      let monthHeadersHtml = '<div class="flex gap-1.5 text-outline font-label-sm text-label-sm font-mono uppercase tracking-wider pb-1 text-[11px]">';
+      monthHeaders.forEach(m => {
+        monthHeadersHtml += `<div class="w-4 text-center overflow-visible whitespace-nowrap">${m || ''}</div>`;
+      });
+      monthHeadersHtml += '</div>';
+
+      return `
+        <div class="flex flex-col space-y-1.5 pt-1">
+          <div class="overflow-x-auto pb-2 -mx-1 px-1 no-scrollbar heatmap-scroll-container" id="heatmap-scroll-${habit.id}">
+            <div class="inline-flex flex-col gap-1 min-w-max">
+              ${monthHeadersHtml}
+              <div class="inline-flex gap-1.5">
+                ${columnsHtml}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* Render Month View */
+    function renderMonthHeatmap(habit) {
+      const year = habit.selectedYear || 2026;
+      const today = getToday();
+      const todayStr = formatDateStr(today);
+      const theme = THEMES[habit.theme] || THEMES.emerald;
+      const logs = habit.logs || {};
+      const currentMonth = today.getMonth();
+
+      const firstDay = new Date(year, currentMonth, 1);
+      const lastDay = new Date(year, currentMonth + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      const startDayOfWeek = firstDay.getDay();
+
+      const monthName = firstDay.toLocaleString('default', { month: 'long' });
+
+      let gridHtml = '';
+      // Empty leading slots
+      for (let i = 0; i < startDayOfWeek; i++) {
+        gridHtml += `<div class="h-10 rounded-lg bg-surface-container-highest/20 opacity-30"></div>`;
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const cellDate = new Date(year, currentMonth, d);
+        const dateStr = formatDateStr(cellDate);
+        const isToday = dateStr === todayStr;
+        const isCompleted = !!logs[dateStr];
+
+        let cellClass = 'h-10 rounded-xl flex flex-col items-center justify-center cursor-pointer transition-all border ';
+        if (isToday) {
+          cellClass += 'ring-2 ring-primary border-primary ';
+        } else {
+          cellClass += 'border-surface-container-high ';
+        }
+
+        if (isCompleted) {
+          cellClass += `${theme.bgFilled} text-on-secondary font-bold ${theme.glow} `;
+        } else {
+          cellClass += 'bg-surface-container hover:bg-surface-bright text-on-surface-variant ';
+        }
+
+        gridHtml += `
+          <div class="${cellClass}" onclick="toggleCellDate('${habit.id}', '${dateStr}')">
+            <span class="text-xs font-mono font-bold">${d}</span>
+            <span class="text-[9px] uppercase">${isCompleted ? '✓' : ''}</span>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="space-y-2 pt-1">
+          <div class="flex items-center justify-between text-xs font-mono text-outline uppercase">
+            <span>${monthName} ${year}</span>
+            <span>Click day to toggle</span>
+          </div>
+          <div class="grid grid-cols-7 gap-1.5 text-center font-mono text-[11px] text-outline">
+            <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+          </div>
+          <div class="grid grid-cols-7 gap-1.5">
+            ${gridHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    /* Render Week View */
+    function renderWeekHeatmap(habit) {
+      const today = getToday();
+      const todayStr = formatDateStr(today);
+      const theme = THEMES[habit.theme] || THEMES.emerald;
+      const logs = habit.logs || {};
+
+      const currentDay = today.getDay();
+      const startOfWeek = new Date(today);
+      startOfWeek.setDate(today.getDate() - currentDay);
+
+      let weekDaysHtml = '';
+      for (let i = 0; i < 7; i++) {
+        const cellDate = new Date(startOfWeek);
+        cellDate.setDate(cellDate.getDate() + i);
+        const dateStr = formatDateStr(cellDate);
+        const isToday = dateStr === todayStr;
+        const isCompleted = !!logs[dateStr];
+        const dayName = cellDate.toLocaleString('default', { weekday: 'short' });
+        const dayNum = cellDate.getDate();
+
+        let dayClass = 'flex-1 p-2.5 rounded-xl border flex flex-col items-center justify-between cursor-pointer transition-all ';
+        if (isToday) {
+          dayClass += 'ring-2 ring-primary border-primary ';
+        } else {
+          dayClass += 'border-surface-container-high/60 ';
+        }
+
+        if (isCompleted) {
+          dayClass += `${theme.bgFilled} text-on-secondary font-bold ${theme.glow} `;
+        } else {
+          dayClass += 'bg-surface-container hover:bg-surface-bright text-on-surface-variant ';
+        }
+
+        weekDaysHtml += `
+          <div class="${dayClass}" onclick="toggleCellDate('${habit.id}', '${dateStr}')">
+            <span class="text-[10px] uppercase font-mono font-semibold">${dayName}</span>
+            <span class="text-base font-bold my-1 font-mono">${dayNum}</span>
+            <span class="text-[10px] font-bold">${isCompleted ? '✓ Done' : 'Log'}</span>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="space-y-2 pt-1">
+          <div class="flex items-center justify-between text-xs font-mono text-outline">
+            <span>CURRENT WEEK</span>
+            <span>Tap to mark done</span>
+          </div>
+          <div class="flex gap-2">
+            ${weekDaysHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    /* Render All Habit Cards */
+    function renderHabits() {
+      const container = document.getElementById('habits-list');
+      container.innerHTML = '';
+
+      let filtered = appState.habits.filter(h => {
+        if (appState.filterStatus === 'archived') {
+          return !!h.isArchived;
+        } else {
+          return !h.isArchived;
+        }
+      });
+
+      if (appState.searchQuery) {
+        filtered = filtered.filter(h => 
+          h.name.toLowerCase().includes(appState.searchQuery) ||
+          (h.target && h.target.toLowerCase().includes(appState.searchQuery)) ||
+          (h.category && h.category.toLowerCase().includes(appState.searchQuery))
+        );
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="flex flex-col items-center justify-center p-10 bg-surface-container-low rounded-2xl border border-surface-container-high/40 text-center space-y-3">
+            <span class="material-symbols-outlined text-4xl text-outline">fact_check</span>
+            <div class="text-base font-bold text-on-surface">No habits found</div>
+            <p class="text-xs text-outline max-w-xs">
+              ${appState.searchQuery ? 'Try clearing your search query or check archived habits.' : 'Create your first habit telemetry tracker to start logging daily streaks.'}
+            </p>
+            <button onclick="openCreateModal()" class="px-4 py-2 rounded-xl bg-primary-container text-on-primary font-bold text-xs shadow-md mt-1">
+              Create New Habit
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(habit => {
+        const year = habit.selectedYear || 2026;
+        const telemetry = computeTelemetry(habit, year);
+        const theme = THEMES[habit.theme] || THEMES.emerald;
+
+        let matrixHtml = '';
+        if (appState.granularity === 'month') {
+          matrixHtml = renderMonthHeatmap(habit);
+        } else if (appState.granularity === 'week') {
+          matrixHtml = renderWeekHeatmap(habit);
+        } else {
+          matrixHtml = renderYearHeatmap(habit);
+        }
+
+        // Action button (Log today vs Completed today)
+        let logButtonHtml = '';
+        if (telemetry.isCompletedToday) {
+          logButtonHtml = `
+            <button onclick="toggleLogToday('${habit.id}')" class="w-full h-12 rounded-xl bg-secondary-container/30 hover:bg-secondary-container/40 flex items-center justify-center gap-2 text-secondary font-label-lg text-label-lg font-bold shadow-[0_2px_12px_rgba(0,165,114,0.15)] transition-all">
+              <span class="material-symbols-outlined text-[20px]">task_alt</span>
+              <span>Completed today</span>
+              <span class="text-xs opacity-75 font-normal ml-1">(click to undo)</span>
+            </button>
+          `;
+        } else {
+          logButtonHtml = `
+            <button onclick="toggleLogToday('${habit.id}')" class="w-full h-12 rounded-xl ${theme.btnBg} ${theme.btnHover} active:scale-[0.99] transition-all flex items-center justify-center gap-2 ${theme.btnText} font-label-lg text-label-lg font-bold shadow-[0_4px_16px_rgba(128,131,255,0.2)]">
+              <span class="material-symbols-outlined text-[20px]">add</span>
+              <span>Log today</span>
+            </button>
+          `;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'flex flex-col p-space-md rounded-2xl bg-surface-container-low shadow-[0_8px_24px_rgba(0,0,0,0.35)] border border-surface-container-high/40 space-y-space-md transition-all';
+        card.innerHTML = `
+          <!-- Top Row: Year Pagination & Action settings -->
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-2 bg-surface-container-highest px-2.5 py-1 rounded-lg border border-surface-container-high/60">
+              <button onclick="changeHabitYear('${habit.id}', -1)" title="Previous Year" class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface">
+                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+              </button>
+              <span class="font-label-md text-label-md font-semibold text-on-surface font-mono tracking-wide">${year}</span>
+              <button onclick="changeHabitYear('${habit.id}', 1)" title="Next Year" class="w-5 h-5 flex items-center justify-center text-outline hover:text-on-surface">
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+              </button>
+            </div>
+            <button onclick="openTuneModal('${habit.id}')" class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" title="Manage habit">
+              <span class="material-symbols-outlined text-[18px]">tune</span>
+            </button>
+          </div>
+
+          <!-- Habit Title & Info -->
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg ${theme.bgContainer} flex items-center justify-center ${theme.text} mt-0.5 shadow-sm">
+              <span class="material-symbols-outlined text-[18px] font-bold">${habit.icon || 'fitness_center'}</span>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <h2 class="font-title-lg text-title-lg uppercase tracking-tight text-on-surface font-bold">${habit.name}</h2>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold ${theme.bgBadge} ${theme.textBadge}">
+                  ${habit.category || 'DAILY'}
+                </span>
+                ${habit.isArchived ? '<span class="px-1.5 py-0.2 rounded text-[10px] bg-outline/20 text-outline uppercase font-mono">Archived</span>' : ''}
+              </div>
+              <p class="font-body-md text-body-md text-outline mt-0.5">${habit.target}</p>
+            </div>
+          </div>
+
+          <!-- Heatmap Matrix -->
+          ${matrixHtml}
+
+          <!-- Log Action Button -->
+          ${logButtonHtml}
+
+          <!-- Telemetry Stats Footer -->
+          <div class="grid grid-cols-2 gap-space-sm pt-2 bg-surface-container-lowest/60 p-3 rounded-xl border border-surface-container-high/30">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-sm text-label-sm text-outline uppercase font-mono">Streak</span>
+                <span class="font-title-md text-title-md text-on-surface font-mono">${telemetry.currentStreak} days</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[18px]">done_all</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-sm text-label-sm text-outline uppercase font-mono">Total (${year})</span>
+                <span class="font-title-md text-title-md text-on-surface font-mono">${telemetry.totalInYear} days</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 pt-1">
+              <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+                <span class="material-symbols-outlined text-[18px]">pie_chart</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-sm text-label-sm text-outline uppercase font-mono">Rate (${year})</span>
+                <span class="font-title-md text-title-md text-on-surface font-mono">${telemetry.ratePct}% <span class="text-outline font-normal text-body-sm">(${telemetry.totalInYear}/${telemetry.totalDaysDenominator})</span></span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 pt-1">
+              <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary-fixed">
+                <span class="material-symbols-outlined text-[18px]">military_tech</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-sm text-label-sm text-outline uppercase font-mono">Best Streak</span>
+                <span class="font-title-md text-title-md text-on-surface font-mono">${telemetry.bestStreak} days</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        // Auto scroll Year heatmap so current week is visible
+        if (appState.granularity === 'year') {
+          setTimeout(() => {
+            const scroller = document.getElementById(`heatmap-scroll-${habit.id}`);
+            if (scroller) {
+              scroller.scrollLeft = scroller.scrollWidth * 0.72; // scroll near Q3/Q4
+            }
+          }, 20);
+        }
+      });
+    }
+
+    /* Toggle Today's Log for a habit */
+    function toggleLogToday(habitId) {
+      const todayStr = formatDateStr(getToday());
+      toggleCellDate(habitId, todayStr);
+    }
+
+    /* Toggle Specific Date Completion */
+    function toggleCellDate(habitId, dateStr) {
+      const habit = appState.habits.find(h => h.id === habitId);
+      if (!habit) return;
+
+      if (!habit.logs) habit.logs = {};
+      habit.logs[dateStr] = !habit.logs[dateStr];
+
+      saveState();
+      renderHabits();
+
+      // Trigger minor haptic/visual ripple
+      const tooltip = document.getElementById('heatmap-tooltip');
+      if (tooltip) tooltip.style.opacity = '0';
+    }
+
+    /* Change Year for a habit */
+    function changeHabitYear(habitId, delta) {
+      const habit = appState.habits.find(h => h.id === habitId);
+      if (!habit) return;
+
+      habit.selectedYear = (habit.selectedYear || 2026) + delta;
+      saveState();
+      renderHabits();
+    }
+
+    /* Tooltip Handling */
+    function showTooltip(e) {
+      const cell = e.currentTarget;
+      const dateText = cell.getAttribute('data-tooltip-date');
+      const statusText = cell.getAttribute('data-tooltip-status');
+      if (!dateText) return;
+
+      const tooltip = document.getElementById('heatmap-tooltip');
+      document.getElementById('tooltip-date').innerText = dateText;
+      document.getElementById('tooltip-status').innerText = statusText;
+
+      const rect = cell.getBoundingClientRect();
+      const x = Math.min(window.innerWidth - 140, Math.max(10, rect.left - 40));
+      const y = rect.top - 46;
+
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+      tooltip.style.opacity = '1';
+    }
+
+    function hideTooltip() {
+      const tooltip = document.getElementById('heatmap-tooltip');
+      if (tooltip) tooltip.style.opacity = '0';
+    }
+
+    /* ============================================== */
+    /* MODAL: CREATE / EDIT HABIT                     */
+    /* ============================================== */
+    function populateIconPicker(selectedIcon) {
+      const container = document.getElementById('icon-picker');
+      container.innerHTML = '';
+      ICON_PRESETS.forEach(ic => {
+        const isSel = ic === selectedIcon;
+        const div = document.createElement('div');
+        div.className = `w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer border transition-all ${
+          isSel 
+            ? 'bg-primary-container text-on-primary border-primary shadow-sm' 
+            : 'bg-surface-container hover:bg-surface-bright text-outline border-transparent'
+        }`;
+        div.innerHTML = `<span class="material-symbols-outlined text-[20px]">${ic}</span>`;
+        div.onclick = () => {
+          document.getElementById('habit-icon').value = ic;
+          populateIconPicker(ic);
+        };
+        container.appendChild(div);
+      });
+    }
+
+    function openCreateModal() {
+      document.getElementById('modal-habit-title').innerText = 'Create New Habit';
+      document.getElementById('habit-form-id').value = '';
+      document.getElementById('habit-name').value = '';
+      document.getElementById('habit-target').value = '';
+      document.getElementById('habit-category').value = 'DAILY';
+      document.getElementById('habit-icon').value = 'fitness_center';
+      
+      const radio = document.querySelector('input[name="habit-color"][value="emerald"]');
+      if (radio) radio.checked = true;
+
+      populateIconPicker('fitness_center');
+      document.getElementById('modal-habit').classList.remove('hidden');
+    }
+
+    function openEditModal(habitId) {
+      const habit = appState.habits.find(h => h.id === habitId);
+      if (!habit) return;
+
+      document.getElementById('modal-habit-title').innerText = 'Edit Habit';
+      document.getElementById('habit-form-id').value = habit.id;
+      document.getElementById('habit-name').value = habit.name;
+      document.getElementById('habit-target').value = habit.target;
+      document.getElementById('habit-category').value = habit.category;
+      document.getElementById('habit-icon').value = habit.icon || 'fitness_center';
+
+      const colorRadio = document.querySelector(`input[name="habit-color"][value="${habit.theme || 'emerald'}"]`);
+      if (colorRadio) colorRadio.checked = true;
+
+      populateIconPicker(habit.icon || 'fitness_center');
+      document.getElementById('modal-habit').classList.remove('hidden');
+    }
+
+    function closeHabitModal() {
+      document.getElementById('modal-habit').classList.add('hidden');
+    }
+
+    function handleHabitSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('habit-form-id').value;
+      const name = document.getElementById('habit-name').value.trim();
+      const target = document.getElementById('habit-target').value.trim();
+      const category = document.getElementById('habit-category').value.trim() || 'DAILY';
+      const icon = document.getElementById('habit-icon').value || 'fitness_center';
+      const themeRadio = document.querySelector('input[name="habit-color"]:checked');
+      const theme = themeRadio ? themeRadio.value : 'emerald';
+
+      if (id) {
+        // Edit existing
+        const habit = appState.habits.find(h => h.id === id);
+        if (habit) {
+          habit.name = name;
+          habit.target = target;
+          habit.category = category;
+          habit.icon = icon;
+          habit.theme = theme;
+        }
+      } else {
+        // Create new
+        const newHabit = {
+          id: 'habit_' + Date.now(),
+          name,
+          target,
+          category,
+          icon,
+          theme,
+          selectedYear: 2026,
+          isArchived: false,
+          logs: {}
+        };
+        appState.habits.unshift(newHabit);
+      }
+
+      saveState();
+      closeHabitModal();
+      renderHabits();
+    }
+
+    /* ============================================== */
+    /* MODAL: TUNE / SETTINGS                         */
+    /* ============================================== */
+    function openTuneModal(habitId) {
+      const habit = appState.habits.find(h => h.id === habitId);
+      if (!habit) return;
+
+      appState.currentTuneId = habitId;
+      document.getElementById('tune-habit-name').innerText = habit.name;
+      document.getElementById('tune-archive-text').innerText = habit.isArchived ? 'Unarchive Habit' : 'Archive Habit';
+      document.getElementById('modal-tune').classList.remove('hidden');
+    }
+
+    function closeTuneModal() {
+      document.getElementById('modal-tune').classList.add('hidden');
+      appState.currentTuneId = null;
+    }
+
+    function triggerEditFromTune() {
+      const id = appState.currentTuneId;
+      closeTuneModal();
+      if (id) openEditModal(id);
+    }
+
+    function triggerArchiveFromTune() {
+      const habit = appState.habits.find(h => h.id === appState.currentTuneId);
+      if (habit) {
+        habit.isArchived = !habit.isArchived;
+        saveState();
+        renderHabits();
+      }
+      closeTuneModal();
+    }
+
+    function triggerResetLogsFromTune() {
+      const habit = appState.habits.find(h => h.id === appState.currentTuneId);
+      if (habit) {
+        if (confirm(`Are you sure you want to clear all recorded logs for "${habit.name}"?`)) {
+          habit.logs = {};
+          saveState();
+          renderHabits();
+        }
+      }
+      closeTuneModal();
+    }
+
+    function triggerDeleteFromTune() {
+      const habit = appState.habits.find(h => h.id === appState.currentTuneId);
+      if (habit) {
+        if (confirm(`Delete habit "${habit.name}" permanently?`)) {
+          appState.habits = appState.habits.filter(h => h.id !== habit.id);
+          saveState();
+          renderHabits();
+        }
+      }
+      closeTuneModal();
+    }
+
+    /* ============================================== */
+    /* HELP & COFFEE MODALS                           */
+    /* ============================================== */
+    function openHelpModal() {
+      document.getElementById('modal-help').classList.remove('hidden');
+    }
+    function closeHelpModal() {
+      document.getElementById('modal-help').classList.add('hidden');
+    }
+    function openCoffeeModal() {
+      document.getElementById('modal-coffee').classList.remove('hidden');
+    }
+    function closeCoffeeModal() {
+      document.getElementById('modal-coffee').classList.add('hidden');
+    }
+
+    /* ============================================== */
+    /* ANALYTICS TAB RENDERING                        */
+    /* ============================================== */
+    function renderAnalytics() {
+      const activeHabits = appState.habits.filter(h => !h.isArchived);
+      let totalLogs2026 = 0;
+      let totalRateSum = 0;
+      let bestGlobalStreak = 0;
+
+      const dowCounts = [0, 0, 0, 0, 0, 0, 0]; // Sun to Sat
+      const monthCounts = new Array(12).fill(0);
+
+      activeHabits.forEach(h => {
+        const telemetry = computeTelemetry(h, 2026);
+        totalLogs2026 += telemetry.totalInYear;
+        totalRateSum += telemetry.ratePct;
+        if (telemetry.bestStreak > bestGlobalStreak) bestGlobalStreak = telemetry.bestStreak;
+
+        // Count DOW and Month
+        Object.keys(h.logs || {}).forEach(dateStr => {
+          if (h.logs[dateStr]) {
+            const d = new Date(dateStr);
+            if (!isNaN(d.getTime())) {
+              dowCounts[d.getDay()]++;
+              if (d.getFullYear() === 2026) {
+                monthCounts[d.getMonth()]++;
+              }
+            }
+          }
+        });
+      });
+
+      const avgConsistency = activeHabits.length > 0 
+        ? Math.round(totalRateSum / activeHabits.length) 
+        : 0;
+
+      // Update KPI
+      document.getElementById('kpi-active-count').innerText = activeHabits.length;
+      document.getElementById('kpi-total-logs').innerText = totalLogs2026;
+      document.getElementById('kpi-consistency').innerText = `${avgConsistency}%`;
+      document.getElementById('kpi-best-streak').innerText = `${bestGlobalStreak}d`;
+
+      // Render DOW Bar Chart
+      const dowContainer = document.getElementById('chart-dow-bars');
+      dowContainer.innerHTML = '';
+      const maxDow = Math.max(1, ...dowCounts);
+      const dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      dowCounts.forEach((count, idx) => {
+        const heightPct = Math.max(10, Math.round((count / maxDow) * 100));
+        const col = document.createElement('div');
+        col.className = 'flex flex-col items-center h-full justify-end gap-1.5';
+        col.innerHTML = `
+          <span class="text-[10px] font-mono font-bold text-outline">${count}</span>
+          <div class="w-full bg-secondary/80 rounded-t-lg transition-all" style="height: ${heightPct}%;"></div>
+          <span class="text-[10px] font-mono text-outline uppercase">${dowNames[idx]}</span>
+        `;
+        dowContainer.appendChild(col);
+      });
+
+      // Render Monthly Chart
+      const monthContainer = document.getElementById('chart-monthly-bars');
+      monthContainer.innerHTML = '';
+      const maxMonth = Math.max(1, ...monthCounts);
+      const mNames = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+
+      monthCounts.forEach((cnt, idx) => {
+        const hPct = Math.max(8, Math.round((cnt / maxMonth) * 100));
+        const mCol = document.createElement('div');
+        mCol.className = 'flex flex-col items-center h-full justify-end gap-1';
+        mCol.innerHTML = `
+          <div class="w-full bg-tertiary/75 rounded-t transition-all hover:bg-tertiary" style="height: ${hPct}%;" title="${cnt} logs"></div>
+          <span class="text-[9px] font-mono text-outline">${mNames[idx]}</span>
+        `;
+        monthContainer.appendChild(mCol);
+      });
+
+      // Render Leaderboard
+      const leaderboardContainer = document.getElementById('analytics-leaderboard');
+      leaderboardContainer.innerHTML = '';
+
+      if (activeHabits.length === 0) {
+        leaderboardContainer.innerHTML = `<div class="text-xs text-outline">No active habits to rank.</div>`;
+        return;
+      }
+
+      // Sort by rate
+      const sorted = [...activeHabits].sort((a, b) => {
+        return computeTelemetry(b, 2026).ratePct - computeTelemetry(a, 2026).ratePct;
+      });
+
+      sorted.forEach((h, rank) => {
+        const tel = computeTelemetry(h, 2026);
+        const theme = THEMES[h.theme] || THEMES.emerald;
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between p-3 rounded-xl bg-surface-container border border-surface-container-high/50';
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs font-bold text-outline w-4">#${rank + 1}</span>
+            <div class="w-7 h-7 rounded-lg ${theme.bgContainer} flex items-center justify-center ${theme.text}">
+              <span class="material-symbols-outlined text-[16px]">${h.icon || 'fitness_center'}</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-on-surface">${h.name}</span>
+              <span class="text-[11px] text-outline">${h.target}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 font-mono text-right">
+            <div class="flex flex-col">
+              <span class="text-xs font-bold text-secondary">${tel.currentStreak}d streak</span>
+              <span class="text-[10px] text-outline">${tel.totalInYear} days total</span>
+            </div>
+            <span class="text-sm font-bold text-primary">${tel.ratePct}%</span>
+          </div>
+        `;
+        leaderboardContainer.appendChild(row);
+      });
+    }
+
+    /* ============================================== */
+    /* BACKUP / EXPORT / IMPORT                       */
+    /* ============================================== */
+    function exportDataJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState.habits, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `habitheat_backup_${formatDateStr(getToday())}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function importDataJson(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            appState.habits = imported;
+            saveState();
+            renderHabits();
+            renderAnalytics();
+            alert('Habits and telemetry imported successfully!');
+          } else {
+            alert('Invalid backup format.');
+          }
+        } catch (err) {
+          alert('Failed to parse JSON file.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetToSampleData() {
+      if (confirm('Reset habits back to the default sample configuration? Any custom logs will be overwritten.')) {
+        appState.habits = generateSeedHabits();
+        saveState();
+        renderHabits();
+        renderAnalytics();
+      }
+    }
+
+    /* App Initialization */
+    document.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      renderHabits();
+
+      // Register Service Worker for PWA mobile install & offline support
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch((err) => {
+          console.warn('Service worker registration failed:', err);
+        });
+      }
+
+      // Keyboard shortcut for escape on modals
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeHabitModal();
+          closeTuneModal();
+          closeHelpModal();
+          closeCoffeeModal();
+        }
       });
     });
-  });
-</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-8px_24px_rgba(0,0,0,0.45)]" data-active-classes="text-secondary bg-surface-container-high shadow-[0_0_16px_rgba(78,222,163,0.2)]"><div class="flex items-center justify-center gap-4 h-16 px-margin max-w-md mx-auto"><a aria-current="page" class="flex-1 h-11 flex items-center justify-center gap-2 rounded-xl transition-all duration-200 text-secondary bg-surface-container-high shadow-[0_0_16px_rgba(78,222,163,0.2)]" data-path="habits" href="#"><span class="material-symbols-outlined text-[22px]">check_box</span><span class="font-label-md text-label-md font-semibold">Habits</span></a><a class="flex-1 h-11 flex items-center justify-center gap-2 rounded-xl text-outline hover:text-on-surface transition-all duration-200" data-path="analytics" href="#"><span class="material-symbols-outlined text-[22px]">trending_up</span><span class="font-label-md text-label-md font-semibold">Analytics</span></a></div></nav></body></html>
+  </script>
+</body>
+</html>
